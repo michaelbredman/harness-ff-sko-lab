@@ -6,14 +6,14 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: test-app
+      app: test-app-ff
   template:
     metadata:
       labels:
-        app: test-app
+        app: test-app-ff
     spec:
       containers:
-      - name: test-app
+      - name: test-app-ff
         image: docker.io/mredman/harness-ff-sko:latest
         imagePullPolicy: Always
         resources:
@@ -26,10 +26,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: harness-ff
+  name: harness-ff-service
 spec:
   selector:
-    app: harness-ff
+    app: test-app-ff
   ports:
   - name: http
     port: 3001
